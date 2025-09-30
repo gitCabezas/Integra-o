@@ -1,0 +1,9 @@
+com\projetolivro\gerenciador_autores_obras\controller\ObraController.class
+com\projetolivro\gerenciador_autores_obras\controller\AutorController.class
+com\projetolivro\gerenciador_autores_obras\model\Obra.class
+com\projetolivro\gerenciador_autores_obras\service\AutorService.class
+com\projetolivro\gerenciador_autores_obras\model\Autor.class
+com\projetolivro\gerenciador_autores_obras\repository\AutorRepository.class
+com\projetolivro\gerenciador_autores_obras\repository\ObraRepository.class
+com\projetolivro\gerenciador_autores_obras\service\ObraService.class
+com\projetolivro\gerenciador_autores_obras\GerenciadorAutoresObrasApplication.class
