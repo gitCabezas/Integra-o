@@ -1,3 +1,5 @@
+# --- Estágio 1: Build ---
+# Usa uma imagem completa do JDK 17 para compilar a aplicação.
 FROM eclipse-temurin:17-jdk-focal as builder
 
 # Define o diretório de trabalho.
@@ -17,21 +19,21 @@ COPY src ./src
 RUN ./mvnw package -DskipTests
 
 
-
+# --- Estágio 2: Execução ---
 # Usa uma imagem Java Runtime (JRE), que é muito menor e mais segura para produção.
 FROM eclipse-temurin:17-jre-focal
 
-# diretório 
+# Define o diretório de trabalho.
 WORKDIR /app
 
-#  parâmetro da JVM 
+# Adiciona o parâmetro da JVM para corrigir o erro em ambientes de contêiner.
 ENV JAVA_OPTS="-XX:-UseContainerSupport"
 
-# Copia o arquivo .jar
+# Copia o arquivo .jar que foi gerado no estágio 'builder' para a imagem final.
 COPY --from=builder /app/target/gerenciador-autores-obras-0.0.1-SNAPSHOT.jar app.jar
 
-# Expõe a porta 8080
+# Expõe a porta 8080, que é a padrão do Spring Boot.
 EXPOSE 8080
 
-# iniciar a aplicação 
+# Comando para iniciar a aplicação quando o contêiner for executado.
 ENTRYPOINT ["java", "-jar", "app.jar"]
