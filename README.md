@@ -200,7 +200,7 @@ Ideal para testes e desenvolvimento local.
 
 O versionamento do projeto foi feito via Git e hospedado no GitHub:  
 👉 [https://github.com/gitCabezas/Integra-o](https://github.com/gitCabezas/Integra-o)
-
+http://integra-o-production-ae0f.up.railway.app/
 ---
 
 ## 📅 Fortaleza — 2025
