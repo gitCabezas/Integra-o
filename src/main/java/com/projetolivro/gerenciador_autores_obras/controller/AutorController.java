@@ -2,7 +2,6 @@ package com.projetolivro.gerenciador_autores_obras.controller;
 
 
 import com.projetolivro.gerenciador_autores_obras.model.Autor;
-import com.projetolivro.gerenciador_autores_obras.model.Obra;
 import com.projetolivro.gerenciador_autores_obras.service.AutorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -11,8 +10,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
-
-import static org.springframework.util.ClassUtils.isPresent;
 
 @RestController
 @RequestMapping("/api/autores")
