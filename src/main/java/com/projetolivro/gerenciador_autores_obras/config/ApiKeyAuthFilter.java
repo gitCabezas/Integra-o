@@ -4,9 +4,7 @@ import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
@@ -16,8 +14,14 @@ import java.util.ArrayList;
 @Component
 public class ApiKeyAuthFilter extends OncePerRequestFilter {
 
-    @Value("${api.security.key}")
+    @Value("${api.security.key.hashed}")
     private String apiKey;
+
+    private final PasswordEncoder passwordEncoder;
+
+    public ApiKeyAuthFilter(PasswordEncoder passwordEncoder) {
+        this.passwordEncoder = passwordEncoder;
+    }
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
@@ -25,7 +29,7 @@ public class ApiKeyAuthFilter extends OncePerRequestFilter {
 
         String requestApiKey = request.getHeader("X-API-KEY");
 
-        if (apiKey.equals(requestApiKey)) {
+        if (requestApiKey != null && passwordEncoder.matches(requestApiKey, apiKey)) {
             UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken("apiUser", null, new ArrayList<>());
             SecurityContextHolder.getContext().setAuthentication(authentication);
         } else {
