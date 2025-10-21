@@ -14,7 +14,6 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import java.io.IOException;
 import java.util.ArrayList;
 
-@Component
 public class ApiKeyAuthFilter extends OncePerRequestFilter {
 
     @Value("${api.security.key.hashed}")
