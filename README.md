@@ -204,3 +204,10 @@ https://integra-o-19yp.onrender.com
 ---
 
 ## 📅 Fortaleza — 2025
+---
+
+## Autenticação
+
+Foi utilizado o método API KEY para a auttenticação das requisições. Aqui os dados da API:
+**KEY:** `X-API-KEY`
+**VALUE:** `sua-nova-chave-secreta`
