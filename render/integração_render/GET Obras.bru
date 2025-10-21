@@ -1,0 +1,32 @@
+meta {
+  name: GET Obras
+  type: http
+  seq: 1
+}
+
+post {
+  url: https://integra-o-19yp.onrender.com/api/autores
+  body: json
+  auth: apikey
+}
+
+auth:apikey {
+  key: X-API-KEY
+  value: sua-chave-secreta-da-api
+  placement: header
+}
+
+body:json {
+  {
+    "nome": "Mariana",
+    "sexo": "Masculino",
+    "email": "mariana123@gmail.com",
+    "dataNascimento": "2004-07-01",
+    "paisOrigem": "Brasil",
+    "cpf": "12345678"
+  }
+}
+
+settings {
+  encodeUrl: true
+}
